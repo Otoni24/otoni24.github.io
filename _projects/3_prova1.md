@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Game"
+title: "Game1"
 description: "Description"
 tags: [Unity, C#, 2D]
 github_link: "https://github.com"
