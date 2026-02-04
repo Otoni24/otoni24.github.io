@@ -1,0 +1,10 @@
+title: Portfolio di Mario
+description: Game Developer & Programmer
+theme: minima
+plugins:
+  - jekyll-seo-tag
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
