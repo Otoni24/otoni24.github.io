@@ -3,13 +3,20 @@ layout: default
 title: Portfolio Game Dev
 ---
 
-<div class="container">
-    <h2 class="section-title">My Projects</h2>
+<header class="hero">
+    <h1>Hello, I'm Riccardo Barazzotto</h1>
+    <p>Game Developer & C++ Specialist.</p>
+    <br>
+    <div>
+        <a href="#">GitHub</a> &bull; <a href="#">LinkedIn</a> &bull; <a href="#">Itch.io</a>
+    </div>
+</header>
 
+<div class="container">
+    <h2 class="section-title">Latest Work</h2>
     <div class="projects-grid">
         {% for project in site.projects %}
         <a href="{{ project.url }}" class="project-card">
-
             {% if project.thumbnail %}
             <img src="{{ project.thumbnail }}" alt="{{ project.title }}" class="card-image">
             {% else %}
@@ -18,7 +25,8 @@ title: Portfolio Game Dev
 
             <div class="card-content">
                 <h3>{{ project.title }}</h3>
-                <p>{{ project.description | truncate: 80 }}...</p> <div class="tags">
+                <p>{{ project.description | truncate: 80 }}...</p>
+                <div class="tags">
                     {% for tag in project.tags %}
                     <span class="tag">{{ tag }}</span>
                     {% endfor %}
