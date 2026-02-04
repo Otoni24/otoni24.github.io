@@ -1,18 +1,30 @@
 ---
 layout: default
-title: Home
+title: Portfolio Game Dev
 ---
 
-<h1>I Miei Progetti</h1>
+<div class="container">
+    <h2 class="section-title">Latest Work</h2>
 
-<ul>
-  {% for project in site.projects %}
-    <li>
-      <h2><a href="{{ project.url }}">{{ project.title }}</a></h2>
-      
-      <p>{{ project.description }}</p>
-      
-      <p><strong>Tecnologie:</strong> {{ project.tags | join: ", " }}</p>
-    </li>
-  {% endfor %}
-</ul>
+    <div class="projects-grid">
+        {% for project in site.projects %}
+        <a href="{{ project.url }}" class="project-card">
+
+            {% if project.thumbnail %}
+            <img src="{{ project.thumbnail }}" alt="{{ project.title }}" class="card-image">
+            {% else %}
+            <div class="card-image"></div>
+            {% endif %}
+
+            <div class="card-content">
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.description | truncate: 80 }}...</p> <div class="tags">
+                    {% for tag in project.tags %}
+                    <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>

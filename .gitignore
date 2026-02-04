@@ -1,0 +1,17 @@
+# File di sistema di Visual Studio e VS Code
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# File temporanei di Jekyll (il generatore del sito)
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# File di sistema Windows/Mac
+Thumbs.db
+.DS_Store

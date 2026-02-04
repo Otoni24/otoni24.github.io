@@ -1,0 +1,104 @@
+/* STILE GENERALE */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f4f4; /* Grigio chiaro come nella foto */
+    color: #333;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* LA SEZIONE IN ALTO (HERO) */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: white;
+    border-bottom: 1px solid #eaeaea;
+}
+
+    .hero h1 {
+        font-size: 3em;
+        margin-bottom: 10px;
+        color: #222;
+    }
+
+    .hero p {
+        font-size: 1.2em;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+/* LA GRIGLIA DEI PROGETTI */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9em;
+    color: #888;
+}
+
+.projects-grid {
+    display: grid;
+    /* Questa riga magica rende tutto responsive automaticamente */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* LE CARDS */
+.project-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+    text-decoration: none; /* Rimuove la sottolineatura dai link */
+    color: inherit;
+    display: block;
+}
+
+    .project-card:hover {
+        transform: translateY(-5px); /* Effetto sollevamento al mouse */
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+.card-image {
+    width: 100%;
+    height: 180px;
+    background-color: #ddd; /* Colore se manca l'immagine */
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+    .card-content h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .card-content p {
+        font-size: 0.9em;
+        color: #666;
+    }
+
+.tags {
+    margin-top: 15px;
+}
+
+.tag {
+    background: #eee;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: bold;
+    color: #555;
+    margin-right: 5px;
+}

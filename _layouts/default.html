@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+    <header class="hero">
+        <h1>Ciao, sono {{ site.author_name }}</h1>
+        <p>{{ site.description }}</p>
+        <br>
+        <div>
+            <a href="#">GitHub</a> &bull; <a href="#">LinkedIn</a> &bull; <a href="#">Itch.io</a>
+        </div>
+    </header>
+
+    <main>
+        {{ content }}
+    </main>
+
+    <footer style="text-align: center; padding: 40px; color: #888; font-size: 0.8em;">
+        &copy; 2024 {{ site.title }}
+    </footer>
+
+</body>
+</html>
