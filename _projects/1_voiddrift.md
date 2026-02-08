@@ -1,38 +1,32 @@
 ---
 layout: post
 title: "Void Drifter"
-description: "A SFML C++ project that uses a custom Level Editor"
-tags: [C++, SFML, Box2D]
+description: "A custom C++ arcade game with a dedicated Level Editor."
+tags: [C++, SFML, Box2D, Tool Dev]
+role: "Solo Developer"
+engine: "Custom C++ / SFML"
+date: 2025-06-01
 github_link: "https://github.com/Otoni24/VoidDrift"
 thumbnail: "/assets/images/cover_voiddrift.jpg"
+header_video: "/assets/videos/sample.mp4"
 youtube_id: "xfh6DdWcqMM"
 ---
 
-# Description
+VoidDrift is a 2D arcade game developed as a high-performance educational project. The primary goal was to master Modern C++ and understand the low-level fundamentals of game architecture without relying on a commercial engine like Unity or Unreal.
 
-`VoidDrift` is a simple 2D game developed as a personal educational project. The primary goal was to learn C++ and understand the fundamentals of game development without relying on a commercial engine.
+The game delivers a complete arcade experience, featuring 3 unique levels, physics-based movement, and a custom content pipeline.
 
-The game is a basic but complete arcade experience, featuring 3 levels, built entirely from scratch.
+## Technical Highlights
 
------
+- **Custom Framework:** Built from the ground up using C++17 and [SFML](https://github.com/SFML/SFML) for rendering, window management, audio, and input handling.
+- **Physics-Based Gameplay:** Integrated [Box2D](https://github.com/erincatto/box2d) directly into the game loop for precise physics simulations and dynamic collision resolution.
+- **Data-Driven Design:** Levels are not hardcoded but loaded from external `.json` files, parsed via a custom `VoidLevelLoader` library.
+- **Entity Component System:** Utilizes a lightweight architecture to manage game objects, separating logic from data for better scalability.
 
-## Features
+## Dedicated Level Editor
 
-  * **Custom Framework:** Built from the ground up using C++17 and [SFML](https://github.com/SFML/SFML) for rendering, window management, audio, and input.
-  * **Physics-Based Gameplay:** Uses [Box2D](https://github.com/erincatto/box2d) for all physics simulations and collision handling.
-  * **Custom Levels:** Includes 3 unique levels created with a dedicated editor.
-  * **Level Loading:** Levels are loaded from external `.json` files, parsed via the `VoidLevelLoader` library.
+One of the biggest challenges of this project was creating a workflow to design levels efficiently. Instead of using Tiled, I developed a standalone tool: **[VoidLevelEditor](https://github.com/Otoni24/VoidLevelEditor)**.
 
------
+This editor handles asset placement, collision box generation, and entity properties. It exports data directly to the JSON format consumed by the game engine.
 
-## Project Context
-
-This game is an executable and serves as a personal portfolio piece. The goal is not distribution, but rather to demonstrate the skills acquired in "engine-less" development.
-
-### Dedicated Level Editor
-
-All levels in `VoidDrift` were created using a dedicated, standalone 2D editor also developed for this project: **[VoidLevelEditor](https://github.com/Otoni24/VoidLevelEditor)**.
-
-This editor (built with ImGui and SFML) handles asset placement and hitbox generation, exporting the data into a `.json` format that this game consumes.
-
-To load the exported `.json` levels, `VoidDrift` uses the companion library `VoidLevelLoader`.
+> **Project Goal:** This game is an executable portfolio piece. The focus is not on commercial distribution, but rather to demonstrate "engine-less" development skills, memory management, and tool creation.

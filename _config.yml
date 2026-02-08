@@ -1,9 +1,11 @@
-title: Riccardo Barazzotto's Portfolio
-author_name: Riccardo Barazzotto
-description: Game Developer and C++ Specialist.
-url: "https://tuonome.github.io" 
+username: Riccardo Barazzotto
+user_title: Game Developer & C++ Specialist
+email: riccardobarazotto@gmail.com
+github_username:  otoni24
 
 collections:
   projects:
     output: true
     permalink: /projects/:path/
+
+exclude: ['package.json', 'src' , 'node_modules']

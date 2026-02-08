@@ -1,0 +1,529 @@
+/* ==========================================================================
+   1. IMPORTS & LIBRARIES
+   ========================================================================== */
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600');
+
+/* Normalize CSS */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+
+/* FontAwesome 4.7 */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+/* Devicon (Latest) */
+@import url("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css");
+
+
+/* ==========================================================================
+   2. GLOBAL VARIABLES (THEME CONFIG)
+   ========================================================================== */
+:root {
+    /* --- Colors --- */
+    --bg-body:       #ffffff;   /* Default Site Background (White) */
+    --bg-header:     #181818;   /* Hero/Header Background (Dark Gray/Black) */
+    --accent:        #e63946;   /* Main Accent Color (Red) */
+
+    /* --- Typography Colors --- */
+    --text-dark:     #333333;   /* Headings */
+    --text-med:      #555555;   /* Body text */
+    --text-light:    #ffffff;   /* Text on dark backgrounds */
+    --text-muted:    #cbd5e0;   /* Secondary text on dark bg */
+
+    /* --- Layout Dimensions --- */
+    --project-width: 1200px;    /* Max width for project pages */
+}
+
+
+/* ==========================================================================
+   3. BASE STYLES & TYPOGRAPHY
+   ========================================================================== */
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    line-height: 1.5;
+    color: var(--text-med);
+    background-color: var(--bg-body);
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* HTML5 Blocks */
+article, aside, figcaption, figure, footer, header, nav, section {
+    display: block;
+}
+
+/* Headings */
+h1, h2, h3, h4, strong {
+    margin-top: 1em;
+    padding-top: 1em;
+    line-height: 1.25;
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1rem; }
+
+/* Lists & Text Utilities */
+ol, ul { padding-left: 40px; }
+figure, ol, p, ul { margin: 1em 0; }
+a img { border: 0; }
+sub, sup { line-height: 0; }
+a { text-decoration: none; color: inherit; transition: 0.2s; }
+
+
+/* ==========================================================================
+   4. HERO SECTION (HOME)
+   ========================================================================== */
+#particles-js {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-header); /* Variable: Dark Gray */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.particles-js-canvas-el {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+}
+
+/* Main Hero Container */
+.hero-container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* --- Hero Text (Left) --- */
+.hero-text {
+    position: relative;
+    z-index: 15;
+    max-width: 600px;
+    margin-top: -30px;
+}
+
+.hero-deco-line {
+    width: 110px;
+    height: 8px;
+    background-color: var(--accent); /* Variable: Red */
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.hero-text h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    font-weight: 800;
+    color: var(--text-light);
+    margin-bottom: 25px;
+    margin-top: -20px;
+}
+
+.hero-text h1 .highlight {
+    color: var(--accent); /* Variable: Red */
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 35px;
+    max-width: 90%;
+}
+
+/* Social Icons */
+.header-icons.text-left { display: flex; gap: 25px; justify-content: flex-start; }
+.header-icons .icon { font-size: 2rem; color: var(--text-light); transition: all 0.3s ease; }
+.header-icons .icon:hover { color: var(--accent); transform: translateY(-3px); }
+
+
+/* --- Hero Image (Right - Absolute) --- */
+/* --- Hero Image (Right - Absolute) --- */
+.hero-image {
+    position: absolute;
+    bottom: 0;
+    right: -320px; /* Adjust horizontal position here */
+    height: 100vh; /* Fixed height for container */
+    width: auto;
+    z-index: 5;
+    pointer-events: none;
+
+    /* Flexbox to lock blob center */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.hero-image img {
+    height: 100%;
+    width: auto;
+    max-width: none;
+    display: block;
+    position: relative;
+    z-index: 2; /* Sits above blob */
+    margin-bottom: -2px;
+    filter: drop-shadow(-20px 0 30px rgba(0,0,0,0.5));
+    animation: fadeInRight 1s ease-out;
+}
+
+/* Background Blob (Centered relative to image) */
+.hero-blob {
+    position: absolute;
+    top: 45%; /* Slightly offset upwards */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(230, 57, 70, 0.15) 0%, rgba(0,0,0,0) 70%);
+    z-index: 1; /* Sits behind image */
+}
+
+/* Scroll Arrow */
+.down {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    z-index: 20; color: var(--text-light); font-size: 1.5rem; opacity: 0.7;
+    animation: bounce 2s infinite;
+}
+.down:hover { opacity: 1; }
+
+/* Hero Animations */
+@keyframes fadeInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);} 40% {transform: translateX(-50%) translateY(-10px);} 60% {transform: translateX(-50%) translateY(-5px);} }
+
+
+/* ==========================================================================
+   5. RESPONSIVE UTILITIES (Mobile)
+   ========================================================================== */
+@media only screen and (max-width: 1000px) {
+    /* Hero Reset for Mobile */
+    .hero-container { flex-direction: column-reverse; justify-content: center; }
+    .hero-text { text-align: center; margin-bottom: 40px; }
+    .header-icons.text-left { justify-content: center; }
+
+    .hero-image {
+        position: relative; bottom: auto; right: auto;
+        width: 100%; display: flex; justify-content: center; align-items: flex-end;
+    }
+    .hero-image img { height: auto; max-height: 50vh; max-width: 100%; margin-bottom: 0; }
+
+    .hero-text h1 { font-size: 3rem; }
+    .hero-blob { display: none; }
+}
+
+
+/* ==========================================================================
+   6. ABOUT & EXPERTISE
+   ========================================================================== */
+#about {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 960px;
+}
+
+@media only screen and (min-width: 550px) {
+    #about { width: 80%; }
+}
+
+.tech { margin: 10px; }
+.user-details { text-align: center; margin: 5px auto; }
+
+.user {
+    text-align: center;
+    font-size: 60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.user p { font-size: 16px; }
+
+@media only screen and (min-width: 550px) {
+    .user { flex-wrap: nowrap; font-size: 75px; }
+}
+
+
+/* ==========================================================================
+   7. PROJECTS GRID (HOME)
+   ========================================================================== */
+/* Main Container */
+#projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 550px) {
+    #projects { width: 75%; }
+}
+
+/* Grid Layout */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+}
+
+/* Smart Hover: Dim other cards */
+.projects-grid:has(.project-card:hover) .project-card:not(:hover) {
+    opacity: 0.6;
+}
+
+/* Project Card */
+.project-card {
+    background: #f5f7fa;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none !important;
+    color: inherit;
+    display: block;
+    box-shadow: none;
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1;
+}
+
+/* Card Hover State */
+.project-card:hover {
+    opacity: 1 !important;
+    transform: translateY(-15px);
+    box-shadow: 0 17px 9px -4px rgba(0,0,0,0.08);
+    z-index: 10;
+}
+
+/* Card Elements */
+.card-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #eee;
+    overflow: hidden;
+}
+
+.card-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
+
+.card-content { padding: 25px; text-align: left; }
+.card-content h3 { margin: 0 0 10px; color: var(--text-dark); font-weight: bold; font-size: 1.4rem; }
+.card-content p { color: #666; font-size: 0.95rem; margin-bottom: 15px; line-height: 1.6; }
+
+/* Tags */
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.tag {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.05);
+    color: var(--text-med);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Legacy Theme Styles (Kept for compatibility) */
+.user-projects { margin: 20px auto; }
+.user-projects img { max-width: 100%; height: auto; border-radius: 5px; }
+.user-projects h5, body { margin: 0; }
+.user-projects li { color: #1a222c; font-size: 1.1rem; }
+.user-projects p { margin-right: 5px; }
+
+.project-link {
+    display: inline-block; margin: 10px 0; padding: 5px;
+    color: #1a222c; background-color: transparent;
+    border: 1px solid #1a222c; border-radius: 10px;
+    text-align: center; outline: 0; text-decoration: none; cursor: pointer;
+    transition: all .3s ease-out;
+}
+.project-link:active, .project-link:hover {
+    background-color: #54516a; border-color: #54516a; color: #fff;
+}
+
+
+/* ==========================================================================
+   8. PROJECT DETAIL PAGE (CINEMA STRIP)
+   ========================================================================== */
+/* Layout Helper */
+.central-container {
+    width: 100%;
+    max-width: var(--project-width);
+    margin: 0 auto;
+}
+
+/* --- Cinema Header (Dark) --- */
+.cinema-header-section {
+    width: 100%;
+    background-color: var(--bg-header); /* Variable: Dark */
+    display: flex;
+    justify-content: center;
+}
+
+.cinema-header-section .central-container { background: #000; line-height: 0; }
+.cinema-header-section video, .cinema-header-section img { width: 100%; height: auto; display: block; }
+
+/* --- Content Area (White) --- */
+.project-content-area {
+    width: 90%;
+    margin: 30px auto 100px;
+}
+
+/* --- Content Grid --- */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 60px;
+    align-items: start;
+}
+
+/* --- Left Column: Story --- */
+.project-title {
+    font-size: 3.5rem; font-weight: 900; line-height: 0.95;
+    color: #1a222c; /* Keeps logic of dark text on white paper */
+    margin-top: -50px; margin-bottom: 40px; letter-spacing: -1.5px;
+}
+
+.prose { font-size: 1.15rem; line-height: 1.8; color: #4b5563; }
+.prose p { margin-bottom: 2em; max-width: 65ch; }
+
+/* Separators */
+.prose h2 {
+    font-size: 1.8rem; font-weight: 800; color: #1a222c;
+    margin-top: 60px; margin-bottom: 25px;
+    padding-left: 20px;
+    border-left: 5px solid var(--accent); /* Variable: Red border */
+}
+
+/* Feature Lists */
+.prose ul {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+    padding: 0; margin: 30px 0; list-style: none;
+}
+.prose li {
+    background: #f9fafb; border: 1px solid #e5e7eb;
+    padding: 15px 20px; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 600; color: #374151;
+}
+.prose li::before {
+    content: "■"; color: var(--accent); /* Variable: Red */
+    font-size: 0.5rem; vertical-align: middle; margin-right: 12px; opacity: 0.5;
+}
+
+/* Blockquotes */
+.prose blockquote {
+    background-color: #f0f7ff;
+    border-left: 4px solid var(--accent); /* Variable: Red border */
+    margin: 40px 0; padding: 25px 30px; border-radius: 0 8px 8px 0;
+    font-style: italic; color: #1e3a8a;
+}
+.prose a { color: var(--accent); text-decoration: underline; }
+
+/* --- Right Column: Sticky Sidebar --- */
+.sticky-sidebar { position: sticky; top: 40px; z-index: 10; }
+
+.game-card {
+    background: #fff;
+    padding: 30px; border-radius: 12px;
+    border: 1px solid #e1e4e8;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* Action Buttons */
+.action-buttons { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; }
+
+.btn {
+    display: flex; justify-content: center; align-items: center;
+    padding: 14px 20px; border-radius: 8px; font-weight: 700;
+    text-decoration: none !important; transition: all 0.2s ease;
+    font-size: 1rem; cursor: pointer; gap: 10px;
+}
+
+/* Primary Button (Red Accent) */
+.btn-primary {
+    background-color: var(--bg-header); /* Variable: Red */
+    color: #fff !important;
+    border: 2px solid transparent;
+}
+.btn-primary:hover {
+    background-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Outline Button */
+.btn-outline {
+    background-color: transparent;
+    color: #1a222c !important;
+    border: 2px solid #e1e4e8;
+}
+.btn-outline:hover {
+    background-color: #fff; border-color: var(--accent);
+    color: var(--accent) !important;
+    transform: translateY(-2px);
+}
+
+/* Meta Info */
+.card-divider { border: 0; border-top: 1px solid #eee; margin: 25px 0; }
+.meta-section h4 { font-size: 0.85rem; text-transform: uppercase; color: #888; margin-bottom: 15px; font-weight: 700; }
+
+.tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;}
+.tech-tag { font-size: 0.8rem; background: #f3f4f6; color: #4b5563; padding: 5px 12px; border-radius: 6px; font-weight: 600; }
+
+.specs-list { list-style: none; padding: 0; margin: 0; }
+.specs-list li { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f3f4f6; font-size: 0.95rem; }
+.specs-list li:last-child { border-bottom: none; }
+.specs-list .value { color: #111; font-weight: 600; }
+
+
+/* --- Responsive (Project Page) --- */
+@media only screen and (max-width: 900px) {
+    .content-grid { grid-template-columns: 1fr; gap: 40px; }
+    .project-content-area { margin-top: 40px; }
+    .prose ul { grid-template-columns: 1fr; }
+    .sticky-sidebar { position: static; }
+}
+
+
+/* ==========================================================================
+   9. NAVIGATION & FOOTER
+   ========================================================================== */
+/* Back Link */
+.back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.95rem; font-weight: 700; color: #6b7280;
+    text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 10px; transition: all 0.2s ease;
+    cursor: pointer; position: relative; z-index: 100; padding: 10px 0;
+}
+.back-link .arrow { display: inline-block; transition: transform 0.2s ease; font-size: 1.1rem; line-height: 1; }
+.back-link:hover { color: var(--accent); }
+.back-link:hover .arrow { transform: translateX(-4px); }
+
+/* Footer */
+.footer {
+    background: var(--bg-header); /* Variable: Dark */
+    padding: 10px 0;
+    margin-top: 100px;
+    text-align: center;
+    color: #fff;
+}
+.footer .love { color: var(--accent); }
+.footer a { text-decoration: none; margin: 0; color: #fff; }
+
+/* ==========================================================================
+   10. ACCENT COLOR INTEGRATIONS
+   ========================================================================== */
+
+/* --- Alternative 2: Dynamic Hover (Interactive) --- */
+/* Section Titles turn red on hover */
+/* Project Title inside Card turns red on hover */
+.project-card:hover .card-content h3 {
+    color: var(--accent);
+    transition: color 0.3s ease;
+}

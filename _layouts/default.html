@@ -1,25 +1,10 @@
 <!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
+<html lang="en">
+{% include head.html %}
 <body>
 
-    <nav style="text-align: right; padding: 20px; background: #fff; border-bottom: 1px solid #eee;">
-        <a href="/" style="text-decoration: none; font-weight: bold; color: #333; margin-right: 20px;">HOME</a>
-        <a href="https://github.com" style="text-decoration: none; color: #666;">GITHUB</a>
-    </nav>
-
-    <main>
-        {{ content }}
-    </main>
-
-    <footer style="text-align: center; padding: 40px; color: #888; font-size: 0.8em;">
-        &copy; 2024 Riccardo Barazzotto
-    </footer>
-
+    {{ content }}
+    
+    {% include footer.html %}
 </body>
 </html>

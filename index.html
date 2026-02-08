@@ -1,38 +1,13 @@
 ---
 layout: default
-title: Portfolio Game Dev
 ---
 
-<header class="hero">
-    <h1>Hello, I'm Riccardo Barazzotto</h1>
-    <p>Game Developer & C++ Specialist.</p>
-    <br>
-    <div>
-        <a href="#">GitHub</a> &bull; <a href="#">LinkedIn</a> &bull; <a href="#">Itch.io</a>
-    </div>
-</header>
+{% include header.html %}
 
-<div class="container">
-    <h2 class="section-title">Latest Work</h2>
-    <div class="projects-grid">
-        {% for project in site.projects %}
-        <a href="{{ project.url }}" class="project-card">
-            {% if project.thumbnail %}
-            <img src="{{ project.thumbnail }}" alt="{{ project.title }}" class="card-image">
-            {% else %}
-            <div class="card-image"></div>
-            {% endif %}
+<section id="about">
+    {% include about.html %}
+</section>
 
-            <div class="card-content">
-                <h3>{{ project.title }}</h3>
-                <p>{{ project.description | truncate: 80 }}...</p>
-                <div class="tags">
-                    {% for tag in project.tags %}
-                    <span class="tag">{{ tag }}</span>
-                    {% endfor %}
-                </div>
-            </div>
-        </a>
-        {% endfor %}
-    </div>
-</div>
+<section id="projects">
+    {% include projects.html %}
+</section>
