@@ -207,11 +207,14 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 
     /* 1. LOCK VIEWPORT & REMOVE SCROLLBARS */
     #particles-js {
-        height: 100vh;
-        height: 100dvh;         /* Fix for mobile bars */
-        overflow: hidden;       /* CUT OFF anything that overflows horizontally */
+        height: 100vh;          /* Fallback for old browsers */
+        height: 100svh;         /* "Small Viewport": Ignores address bar resize */
+        overflow: hidden;
         display: block;
         padding: 0;
+
+        /* Optional: Prevent content moving if address bar does resize */
+        touch-action: pan-y;
     }
 
     .hero-container {
