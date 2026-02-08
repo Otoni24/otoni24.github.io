@@ -204,19 +204,80 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
    5. RESPONSIVE UTILITIES (Mobile)
    ========================================================================== */
 @media only screen and (max-width: 1000px) {
-    /* Hero Reset for Mobile */
-    .hero-container { flex-direction: column-reverse; justify-content: center; }
-    .hero-text { text-align: center; margin-bottom: 40px; }
-    .header-icons.text-left { justify-content: center; }
 
-    .hero-image {
-        position: relative; bottom: auto; right: auto;
-        width: 100%; display: flex; justify-content: center; align-items: flex-end;
+    /* 1. RESET LAYOUT & PREVENT SCROLL TRAP */
+    #particles-js {
+        height: auto !important;    /* Force grow with content */
+        min-height: 100vh;          /* At least full screen */
+        min-height: 100dvh;         /* Fix for mobile address bar jumps */
+        overflow: hidden;           /* Disable internal scrolling */
+        display: block;             /* Remove flex centering constraints */
+        padding-bottom: 0;
     }
-    .hero-image img { height: auto; max-height: 50vh; max-width: 100%; margin-bottom: 0; }
 
-    .hero-text h1 { font-size: 3rem; }
-    .hero-blob { display: none; }
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: auto;
+        padding-top: 110px;         /* Top spacing for text */
+        padding-bottom: 0;
+    }
+
+    /* 2. TEXT SECTION */
+    .hero-text {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 20;
+    }
+
+    .hero-deco-line { margin: 0 auto 20px auto; }
+    .hero-text h1 { font-size: 3rem; margin-top: 0; }
+    .header-icons.text-left { justify-content: center; margin-bottom: 10px; }
+
+    /* 3. IMAGE SECTION - FLOW & ALIGNMENT */
+    .hero-image {
+        position: relative;
+        width: 100%;
+        height: auto;
+
+        /* Flex setup to center image at bottom */
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+        right: auto;
+        left: 0;
+        bottom: 0;
+        margin-top: -50px; /* Minimal space from text */
+        pointer-events: none;
+        overflow: visible;
+    }
+
+    .hero-image img {
+        display: block;
+        width: auto;
+        height: auto;
+
+        /* Sizing logic: Big enough but safe */
+        max-height: 55vh;
+        max-width: 120%;
+
+        margin: 0 auto;
+        margin-bottom: -1px; /* Fix potential pixel gap at bottom */
+        z-index: 2;
+    }
+
+    /* 4. BLOB ADJUSTMENT */
+    .hero-blob {
+        width: 320px;
+        height: 320px;
+        top: 60%; /* Push blob lower behind image */
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 
 
@@ -271,7 +332,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 /* Grid Layout */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
     gap: 40px;
 }
 
@@ -282,17 +343,24 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 
 /* Project Card */
 .project-card {
-    background: #f5f7fa;
-    border-radius: 8px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e1e4e8;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     overflow: hidden;
     text-decoration: none !important;
     color: inherit;
     display: block;
-    box-shadow: none;
     transform: translateY(0);
     opacity: 1;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: 1;
+}
+.game-card {
+    background: #fff;
+    padding: 30px; border-radius: 12px;
+    border: 1px solid #e1e4e8;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 /* Card Hover State */
@@ -319,15 +387,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 
 /* Tags */
 .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-.tag {
-    background: #fff;
-    border: 1px solid rgba(0,0,0,0.05);
-    color: var(--text-med);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-}
+.tag { font-size: 0.8rem; background: #f3f4f6; color: #4b5563; padding: 5px 12px; border-radius: 6px; font-weight: 600; }
 
 /* Legacy Theme Styles (Kept for compatibility) */
 .user-projects { margin: 20px auto; }
@@ -397,8 +457,23 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 .prose h2 {
     font-size: 1.8rem; font-weight: 800; color: #1a222c;
     margin-top: 60px; margin-bottom: 25px;
-    padding-left: 20px;
-    border-left: 5px solid var(--accent); /* Variable: Red border */
+    padding-left: 25px; /* Space between bar and text */
+    position: relative; /* Anchor for pseudo-element */
+    border: none;       /* Remove old border */
+}
+
+/* The Accent Bar */
+.prose h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 70%; /* Position at vertical middle */
+    transform: translateY(-50%); /* Perfect centering offset */
+
+    width: 5px;       /* Thickness */
+    height: 70%;      /* Height relative to text (adjust if needed) */
+    background-color: var(--accent);
+    border-radius: 2px; /* Slight roundness */
 }
 
 /* Feature Lists */
@@ -495,15 +570,40 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
    ========================================================================== */
 /* Back Link */
 .back-link {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 0.95rem; font-weight: 700; color: #6b7280;
-    text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.5px;
-    margin-bottom: 10px; transition: all 0.2s ease;
-    cursor: pointer; position: relative; z-index: 100; padding: 10px 0;
+    display: inline-flex;
+    align-items: center; /* Perfect vertical centering */
+    gap: 12px;           /* More breathing room */
+
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #6b7280;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    margin-bottom: 20px;
+    padding: 10px 0;
+    transition: color 0.2s ease;
+
+    position: relative;
+    z-index: 100;
+    cursor: pointer;
 }
-.back-link .arrow { display: inline-block; transition: transform 0.2s ease; font-size: 1.1rem; line-height: 1; }
-.back-link:hover { color: var(--accent); }
-.back-link:hover .arrow { transform: translateX(-4px); }
+
+/* Icon Styles */
+.back-link i {
+    font-size: 1.1rem; /* Slightly larger than text */
+    transition: transform 0.2s ease;
+}
+
+/* Hover Effects */
+.back-link:hover {
+    color: var(--accent);
+}
+
+.back-link:hover i {
+    transform: translateX(-5px); /* Smooth slide left */
+}
 
 /* Footer */
 .footer {
