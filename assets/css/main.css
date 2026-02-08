@@ -205,77 +205,90 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
    ========================================================================== */
 @media only screen and (max-width: 1000px) {
 
-    /* 1. RESET LAYOUT & PREVENT SCROLL TRAP */
+    /* 1. LOCK VIEWPORT & REMOVE SCROLLBARS */
     #particles-js {
-        height: auto !important;    /* Force grow with content */
-        min-height: 100vh;          /* At least full screen */
-        min-height: 100dvh;         /* Fix for mobile address bar jumps */
-        overflow: hidden;           /* Disable internal scrolling */
-        display: block;             /* Remove flex centering constraints */
-        padding-bottom: 0;
+        height: 100vh;
+        height: 100dvh;         /* Fix for mobile bars */
+        overflow: hidden;       /* CUT OFF anything that overflows horizontally */
+        display: block;
+        padding: 0;
     }
 
     .hero-container {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        height: auto;
-        padding-top: 110px;         /* Top spacing for text */
+        height: 100%;
+        padding-top: 40px;      /* Very minimal top spacing */
         padding-bottom: 0;
+        box-sizing: border-box;
     }
 
-    /* 2. TEXT SECTION */
+    /* 2. TEXT SECTION (Compact) */
     .hero-text {
         text-align: center;
         width: 100%;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         position: relative;
         z-index: 20;
+        flex-shrink: 0;         /* Keep text size stable */
     }
 
-    .hero-deco-line { margin: 0 auto 20px auto; }
-    .hero-text h1 { font-size: 3rem; margin-top: 0; }
-    .header-icons.text-left { justify-content: center; margin-bottom: 10px; }
+    .hero-deco-line { display: none; }
 
-    /* 3. IMAGE SECTION - FLOW & ALIGNMENT */
+    .hero-text h1 {
+        font-size: 2.2rem;
+        line-height: 1.1;
+        margin-bottom: 10px;
+        margin-top: -20px;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin-bottom: 15px;
+        padding: 0 10px;        /* Prevent text touching edges */
+    }
+
+    .header-icons.text-left { justify-content: center; margin-bottom: 0; }
+
+    /* 3. IMAGE SECTION (Centered & Big) */
     .hero-image {
         position: relative;
         width: 100%;
-        height: auto;
+        flex-grow: 1;           /* Fill all remaining space */
 
-        /* Flex setup to center image at bottom */
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-
-        right: auto;
-        left: 0;
-        bottom: 0;
-        margin-top: -50px; /* Minimal space from text */
+        /* Reset positioning */
+        right: auto; left: 0; bottom: 0;
+        margin-top: 0;
         pointer-events: none;
-        overflow: visible;
     }
 
     .hero-image img {
+        /* ABSOLUTE CENTERING TRICK */
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%); /* Moves image back by 50% of its own width */
+
+        /* SIZE LOGIC: Height is king */
+        height: 60vh;           /* Very tall */
+        width: auto;            /* Maintain aspect ratio */
+        max-width: none;        /* Allow being wider than screen */
+        min-width: 100%;        /* Ensure it covers at least the screen width */
+
         display: block;
-        width: auto;
-        height: auto;
-
-        /* Sizing logic: Big enough but safe */
-        max-height: 55vh;
-        max-width: 120%;
-
-        margin: 0 auto;
-        margin-bottom: -1px; /* Fix potential pixel gap at bottom */
+        margin-bottom: -1px;
         z-index: 2;
+
+        /* DISABLE ANIMATION ON MOBILE (Crucial for centering to work) */
+        animation: none;
     }
 
     /* 4. BLOB ADJUSTMENT */
     .hero-blob {
-        width: 320px;
-        height: 320px;
-        top: 60%; /* Push blob lower behind image */
-        left: 50%;
+        width: 300px; height: 300px;
+        top: 50%; left: 50%;
         transform: translate(-50%, -50%);
     }
 }
