@@ -143,8 +143,12 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 /* Social Icons */
 .header-icons.text-left { display: flex; gap: 25px; justify-content: flex-start; }
 .header-icons .icon { font-size: 2rem; color: var(--text-light); transition: all 0.3s ease; }
-.header-icons .icon:hover { color: var(--accent); transform: translateY(-3px); }
-
+@media (hover: hover) {
+    .header-icons .icon:hover {
+        color: var(--accent);
+        transform: translateY(-3px);
+    }
+}
 
 /* --- Hero Image (Right - Absolute) --- */
 /* --- Hero Image (Right - Absolute) --- */
@@ -193,7 +197,11 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     z-index: 20; color: var(--text-light); font-size: 1.5rem; opacity: 0.7;
     animation: bounce 2s infinite;
 }
-.down:hover { opacity: 1; }
+@media (hover: hover) {
+    .down:hover {
+        opacity: 1;
+    }
+}
 
 /* Hero Animations */
 @keyframes fadeInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
@@ -353,8 +361,10 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 }
 
 /* Smart Hover: Dim other cards */
-.projects-grid:has(.project-card:hover) .project-card:not(:hover) {
-    opacity: 0.6;
+@media (hover: hover) {
+    .projects-grid:has(.project-card:hover) .project-card:not(:hover) {
+        opacity: 0.6;
+    }
 }
 
 /* Project Card */
@@ -380,11 +390,13 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 }
 
 /* Card Hover State */
-.project-card:hover {
-    opacity: 1 !important;
-    transform: translateY(-15px);
-    box-shadow: 0 17px 9px -4px rgba(0,0,0,0.08);
-    z-index: 10;
+@media (hover: hover) {
+    .project-card:hover {
+        opacity: 1 !important;
+        transform: translateY(-15px);
+        box-shadow: 0 17px 9px -4px rgba(0, 0, 0, 0.08);
+        z-index: 10;
+    }
 }
 
 /* Card Elements */
@@ -419,8 +431,12 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     text-align: center; outline: 0; text-decoration: none; cursor: pointer;
     transition: all .3s ease-out;
 }
-.project-link:active, .project-link:hover {
-    background-color: #54516a; border-color: #54516a; color: #fff;
+@media (hover: hover) {
+    .project-link:active, .project-link:hover {
+        background-color: #54516a;
+        border-color: #54516a;
+        color: #fff;
+    }
 }
 
 
@@ -542,9 +558,11 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     color: #fff !important;
     border: 2px solid transparent;
 }
-.btn-primary:hover {
-    background-color: var(--accent);
-    transform: translateY(-2px);
+@media (hover: hover) {
+    .btn-primary:hover {
+        background-color: var(--accent);
+        transform: translateY(-2px);
+    }
 }
 
 /* Outline Button */
@@ -553,10 +571,13 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     color: #1a222c !important;
     border: 2px solid #e1e4e8;
 }
-.btn-outline:hover {
-    background-color: #fff; border-color: var(--accent);
-    color: var(--accent) !important;
-    transform: translateY(-2px);
+@media (hover: hover) {
+    .btn-outline:hover {
+        background-color: #fff;
+        border-color: var(--accent);
+        color: var(--accent) !important;
+        transform: translateY(-2px);
+    }
 }
 
 /* Meta Info */
@@ -613,12 +634,16 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 }
 
 /* Hover Effects */
-.back-link:hover {
-    color: var(--accent);
+@media (hover: hover) {
+    .back-link:hover {
+        color: var(--accent);
+    }
 }
 
-.back-link:hover i {
-    transform: translateX(-5px); /* Smooth slide left */
+@media (hover: hover) {
+    .back-link:hover i {
+        transform: translateX(-5px); /* Smooth slide left */
+    }
 }
 
 /* Footer */
@@ -636,10 +661,11 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
    10. ACCENT COLOR INTEGRATIONS
    ========================================================================== */
 
-/* --- Alternative 2: Dynamic Hover (Interactive) --- */
 /* Section Titles turn red on hover */
 /* Project Title inside Card turns red on hover */
-.project-card:hover .card-content h3 {
-    color: var(--accent);
-    transition: color 0.3s ease;
+@media (hover: hover) {
+    .project-card:hover .card-content h3 {
+        color: var(--accent);
+        transition: color 0.3s ease;
+    }
 }
