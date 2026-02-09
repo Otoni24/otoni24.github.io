@@ -8,7 +8,7 @@ engine: "Custom C++ / SFML"
 date: 2025-06-01
 github_link: "https://github.com/Otoni24/VoidDrift"
 thumbnail: "/assets/images/cover_voiddrift.jpg"
-header_video: "/assets/videos/sample.mp4"
+header_video: "/assets/videos/voiddrift.mp4"
 youtube_id: "xfh6DdWcqMM"
 ---
 
@@ -27,6 +27,15 @@ The game delivers a complete arcade experience, featuring 3 unique levels, physi
 
 One of the biggest challenges of this project was creating a workflow to design levels efficiently. Instead of using Tiled, I developed a standalone tool: **[VoidLevelEditor](https://github.com/Otoni24/VoidLevelEditor)**.
 
-This editor handles asset placement, collision box generation, and entity properties. It exports data directly to the JSON format consumed by the game engine.
+This editor handles asset placement, entity properties, and exports data directly to the JSON format consumed by the game engine.
+
+## Automated Collision Generation
+To streamline the creation of complex environments, I also developed a separate library called **[VectorizerLib](https://github.com/Otoni24/VectorizerLib)** and integrated it into the editor.
+
+This library automates the generation of physics bodies using two key algorithms:
+- **Marching Squares:** To trace contours from a black-and-white collision mask image.
+- **Ramer-Douglas-Peucker (RDP):** To simplify the resulting geometry into efficient vector chains.
+
+This allows for a rapid workflow where you can simply uploads a visual texture and a binary mask; the editor then automatically generates the optimized **Box2D** collision chains required for gameplay.
 
 > **Project Goal:** This game is an executable portfolio piece. The focus is not on commercial distribution, but rather to demonstrate "engine-less" development skills, memory management, and tool creation.

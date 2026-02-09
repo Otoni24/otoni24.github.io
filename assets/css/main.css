@@ -453,13 +453,33 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 /* --- Cinema Header (Dark) --- */
 .cinema-header-section {
     width: 100%;
-    background-color: var(--bg-header); /* Variable: Dark */
+    background-color: var(--bg-header); /* Matches your theme dark gray */
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.cinema-header-section .central-container { background: #000; line-height: 0; }
-.cinema-header-section video, .cinema-header-section img { width: 100%; height: auto; display: block; }
+/* Remove forced black background to fix "side bars" color */
+.cinema-header-section .central-container {
+    background: transparent;
+    line-height: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centers the video horizontally */
+}
+
+/* Limit video height, adapt width automatically */
+.cinema-header-section video,
+.cinema-header-section img {
+    height: auto;
+    width: auto;
+
+    max-height: 80vh;       /* Cap height to 70% of viewport */
+    max-width: 100%;        /* Ensure it fits on mobile */
+
+    object-fit: contain;    /* Maintains aspect ratio perfectly */
+    display: block;
+}
 
 /* --- Content Area (White) --- */
 .project-content-area {
@@ -517,6 +537,27 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     background: #f9fafb; border: 1px solid #e5e7eb;
     padding: 15px 20px; border-radius: 8px;
     font-size: 0.95rem; font-weight: 600; color: #374151;
+}
+/* --- Fix for Nested Lists (Remove Card Style inside Cards) --- */
+.prose li ul {
+    display: block;             /* Remove grid layout for sub-lists */
+    margin-top: 10px;
+    padding-left: 20px;         /* Indent sub-list */
+}
+
+.prose li li {
+    background: transparent;    /* Remove card background */
+    border: none;               /* Remove border */
+    padding: 2px 0;             /* Reduce padding */
+    font-weight: 400;           /* Normal weight */
+    color: #555;
+}
+
+.prose li li::before {
+    content: "•";               /* Change square to simple dot */
+    font-size: 1rem;
+    color: inherit;             /* Standard color */
+    margin-right: 8px;
 }
 .prose li::before {
     content: "■"; color: var(--accent); /* Variable: Red */
@@ -590,7 +631,13 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 .specs-list { list-style: none; padding: 0; margin: 0; }
 .specs-list li { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f3f4f6; font-size: 0.95rem; }
 .specs-list li:last-child { border-bottom: none; }
-.specs-list .value { color: #111; font-weight: 600; }
+.specs-list .value {
+    color: #111;
+    font-weight: 600;
+    text-align: right;
+    max-width: 80%;
+    display: block;
+}
 
 
 /* --- Responsive (Project Page) --- */
