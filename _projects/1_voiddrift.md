@@ -9,7 +9,6 @@ date: 2025-06-01
 github_link: "https://github.com/Otoni24/VoidDrift"
 thumbnail: "/assets/images/cover_voiddrift.jpg"
 header_video: "/assets/videos/voiddrift.mp4"
-youtube_id: "xfh6DdWcqMM"
 ---
 
 VoidDrift is a 2D arcade game developed as a high-performance educational project. The primary goal was to master Modern C++ and understand the low-level fundamentals of game architecture without relying on a commercial engine like Unity or Unreal.
