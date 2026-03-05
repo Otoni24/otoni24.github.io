@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Void Drifter"
-description: "A custom C++ arcade game with a dedicated Level Editor."
-tags: [C++, SFML, Box2D, Tool Dev]
+title: "VoidDrift"
+description: "A custom C++ arcade game built from scratch without commercial engines."
+tags: [C++, SFML, Box2D, Engine Architecture]
 role: "Solo Developer"
 engine: "Custom C++ / SFML"
 date: 2025-06-01
@@ -11,30 +11,22 @@ thumbnail: "/assets/images/cover_voiddrift.jpg"
 header_video: "/assets/videos/voiddrift.mp4"
 ---
 
-VoidDrift is a 2D arcade game developed as a high-performance educational project. The primary goal was to master Modern C++ and understand the low-level fundamentals of game architecture without relying on a commercial engine like Unity or Unreal.
+VoidDrift is a 2D arcade game developed as an educational project. The primary goal was to master Modern C++ and understand the low-level fundamentals of game architecture without relying on a commercial engine like Unity or Unreal.
 
-The game delivers a complete arcade experience, featuring 3 unique levels, physics-based movement, and a custom content pipeline.
+To maintain a strict focus on engine programming and technical development, all 2D sprites and visual assets were sourced from external graphic packs. This allowed me to dedicate my time entirely to building the custom C++ framework, physics integration, and data pipelines.
+
+The game delivers a complete arcade experience, featuring 3 levels, physics-based movement and a highly customized content pipeline.
 
 ## Technical Highlights
 
 - **Custom Framework:** Built from the ground up using C++17 and [SFML](https://github.com/SFML/SFML) for rendering, window management, audio, and input handling.
 - **Physics-Based Gameplay:** Integrated [Box2D](https://github.com/erincatto/box2d) directly into the game loop for precise physics simulations and dynamic collision resolution.
-- **Data-Driven Design:** Levels are not hardcoded but loaded from external `.json` files, parsed via a custom `VoidLevelLoader` library.
-- **Entity Component System:** Utilizes a lightweight architecture to manage game objects, separating logic from data for better scalability.
+- **Data-Driven Design:** Levels are not hardcoded but loaded dynamically from external `.json` files, parsed via a custom [VoidLevelLoader](https://github.com/Otoni24/VoidLevelLoader) library.
 
-## Dedicated Level Editor
+## Dedicated Tooling & Pipeline
 
-One of the biggest challenges of this project was creating a workflow to design levels efficiently. Instead of using Tiled, I developed a standalone tool: **[VoidLevelEditor](https://github.com/Otoni24/VoidLevelEditor)**.
+Instead of relying on generic third-party software like Tiled, I developed a complete custom pipeline to design levels efficiently.
 
-This editor handles asset placement, entity properties, and exports data directly to the JSON format consumed by the game engine.
+All entity properties and physics colliders for VoidDrift were generated using my own standalone C++ tool: **[VoidLevelEditor](https://otoni24.github.io/projects/0_voidleveleditor/)**. A standout feature of this custom pipeline is its **automated collision generation**. By simply feeding the editor a black-and-white PNG mask of the level environment, the tool mathematically traces the contours and automatically generates the optimized Box2D collision chains required for the game.
 
-## Automated Collision Generation
-To streamline the creation of complex environments, I also developed a separate library called **[VectorizerLib](https://github.com/Otoni24/VectorizerLib)** and integrated it into the editor.
-
-This library automates the generation of physics bodies using two key algorithms:
-- **Marching Squares:** To trace contours from a black-and-white collision mask image.
-- **Ramer-Douglas-Peucker (RDP):** To simplify the resulting geometry into efficient vector chains.
-
-This allows for a rapid workflow where you can simply uploads a visual texture and a binary mask; the editor then automatically generates the optimized **Box2D** collision chains required for gameplay.
-
-> **Project Goal:** This game is an executable portfolio piece. The focus is not on commercial distribution, but rather to demonstrate "engine-less" development skills, memory management, and tool creation.
+> **Project Goal:** This game is an executable portfolio piece. The focus is not on commercial distribution, but rather to demonstrate "engine-less" development skills, memory management, and engine architecture.
