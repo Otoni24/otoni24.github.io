@@ -143,7 +143,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 /* Social Icons */
 .header-icons.text-left { display: flex; gap: 25px; justify-content: flex-start; }
 .header-icons .icon { font-size: 2rem; color: var(--text-light); transition: all 0.3s ease; }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .header-icons .icon:hover {
         color: var(--accent);
         transform: translateY(-3px);
@@ -155,7 +155,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 .hero-image {
     position: absolute;
     bottom: 0;
-    right: -320px; /* Adjust horizontal position here */
+    right: -50px; /* Adjust horizontal position here */
     height: 100vh; /* Fixed height for container */
     width: auto;
     z-index: 5;
@@ -174,7 +174,6 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     display: block;
     position: relative;
     z-index: 2; /* Sits above blob */
-    margin-bottom: -2px;
     filter: drop-shadow(-20px 0 30px rgba(0,0,0,0.5));
     animation: fadeInRight 1s ease-out;
 }
@@ -197,7 +196,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     z-index: 20; color: var(--text-light); font-size: 1.5rem; opacity: 0.7;
     animation: bounce 2s infinite;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .down:hover {
         opacity: 1;
     }
@@ -286,7 +285,6 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
         height: 60vh;           /* Very tall */
         width: auto;            /* Maintain aspect ratio */
         max-width: none;        /* Allow being wider than screen */
-        min-width: 100%;        /* Ensure it covers at least the screen width */
 
         display: block;
         margin-bottom: -1px;
@@ -361,7 +359,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 }
 
 /* Smart Hover: Dim other cards */
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .projects-grid:has(.project-card:hover) .project-card:not(:hover) {
         opacity: 0.6;
     }
@@ -390,7 +388,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 }
 
 /* Card Hover State */
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .project-card:hover {
         opacity: 1 !important;
         transform: translateY(-15px);
@@ -431,7 +429,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     text-align: center; outline: 0; text-decoration: none; cursor: pointer;
     transition: all .3s ease-out;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .project-link:active, .project-link:hover {
         background-color: #54516a;
         border-color: #54516a;
@@ -599,7 +597,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     color: #fff !important;
     border: 2px solid transparent;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .btn-primary:hover {
         background-color: var(--accent);
         transform: translateY(-2px);
@@ -612,7 +610,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     color: #1a222c !important;
     border: 2px solid #e1e4e8;
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .btn-outline:hover {
         background-color: #fff;
         border-color: var(--accent);
@@ -681,13 +679,13 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 }
 
 /* Hover Effects */
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .back-link:hover {
         color: var(--accent);
     }
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .back-link:hover i {
         transform: translateX(-5px); /* Smooth slide left */
     }
@@ -710,7 +708,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 
 /* Section Titles turn red on hover */
 /* Project Title inside Card turns red on hover */
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .project-card:hover .card-content h3 {
         color: var(--accent);
         transition: color 0.3s ease;
