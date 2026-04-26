@@ -5,9 +5,15 @@ layout: default
 <div class="cinema-header-section">
     <div class="central-container">
         {% if page.header_video %}
-        <video autoplay loop muted playsinline poster="{{ page.thumbnail }}">
-            <source src="{{ page.header_video }}" type="video/mp4">
-        </video>
+        <div class="video-wrapper">
+            <video class="hero-video" autoplay loop muted playsinline poster="{{ page.thumbnail }}">
+                <source src="{{ page.header_video }}" type="video/mp4">
+            </video>
+            <div class="video-overlay">
+                <span class="video-loader">[Video Loading]</span>
+                <button class="video-play-btn" style="display: none;">▶ Play</button>
+            </div>
+        </div>
         {% elsif page.thumbnail %}
         <img src="{{ page.thumbnail }}" alt="{{ page.title }}">
         {% endif %}
@@ -66,3 +72,49 @@ layout: default
 
     </div>
 </div>
+
+<div class="cinema-header-section">
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const videoContainers = document.querySelectorAll('.video-wrapper');
+
+        videoContainers.forEach(container => {
+            const video = container.querySelector('.hero-video');
+            const overlay = container.querySelector('.video-overlay');
+            const loader = container.querySelector('.video-loader');
+            const playBtn = container.querySelector('.video-play-btn');
+
+            if (!video || !overlay) return;
+
+            const hideOverlay = () => { overlay.style.display = 'none'; };
+
+            if (!video.paused) {
+                hideOverlay();
+                return;
+            }
+
+            video.addEventListener('playing', hideOverlay);
+
+            let playPromise = video.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    hideOverlay();
+                }).catch(error => {
+                    if (loader) loader.style.display = 'none';
+                    if (playBtn) playBtn.style.display = 'block';
+                    overlay.style.pointerEvents = 'auto';
+                });
+            }
+
+            if (playBtn) {
+                playBtn.addEventListener('click', () => {
+                    video.play();
+                    hideOverlay();
+                });
+            }
+        });
+    });
+</script>

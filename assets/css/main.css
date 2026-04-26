@@ -466,17 +466,62 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     justify-content: center; /* Centers the video horizontally */
 }
 
+/* IL NUOVO WRAPPER: Si comporta come un contenitore flessibile che abbraccia il video */
+.video-wrapper {
+    position: relative;
+    display: inline-flex; /* Fondamentale per mantenere il centraggio dato dal central-container */
+    justify-content: center;
+    align-items: center;
+}
+
 /* Limit video height, adapt width automatically */
 .cinema-header-section video,
 .cinema-header-section img {
     height: auto;
     width: auto;
-
-    max-height: 80vh;       /* Cap height to 70% of viewport */
+    max-height: 80vh;       /* Cap height to 80% of viewport */
     max-width: 100%;        /* Ensure it fits on mobile */
-
     object-fit: contain;    /* Maintains aspect ratio perfectly */
     display: block;
+}
+
+/* OVERLAY E CONTROLLI */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Sfondo semitrasparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    pointer-events: none; /* Fa passare i click al video se serve, non blocca l'interfaccia */
+}
+
+.video-loader {
+    color: white;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+}
+
+.video-play-btn {
+    pointer-events: auto; /* Riattiva i click sul bottone */
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.video-play-btn:hover {
+    background-color: #ffffff;
 }
 
 /* --- Content Area (White) --- */
