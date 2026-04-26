@@ -689,6 +689,26 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     .project-content-area { margin-top: 40px; }
     .prose ul { grid-template-columns: 1fr; }
     .sticky-sidebar { position: static; }
+
+    .video-wrapper {
+        width: 100%;
+        display: flex;
+    }
+
+    .video-overlay {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .video-loader {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .video-play-btn {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
 }
 
 
