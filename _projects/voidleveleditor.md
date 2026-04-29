@@ -10,6 +10,7 @@ date: 2025-06-01
 github_link: "https://github.com/Otoni24/VoidLevelEditor"
 thumbnail: "/assets/images/cover_voidleveleditor.jpg"
 header_video: "/assets/videos/voidleveleditor.mp4"
+youtube_id: "E6CmuVR_3yI"
 ---
 
 VoidLevelEditor is a simple and visual 2D level editor, written in C++, designed to create levels and export hitbox data directly into JSON format.

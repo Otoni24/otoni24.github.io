@@ -10,6 +10,7 @@ date: 2026-01-20
 github_link: "https://github.com/Furcanzo/HexGrid"
 thumbnail: "/assets/images/cover_hexgrid.jpg"
 header_video: "/assets/videos/hexgrid.mp4"
+youtube_id: "QKQzExNvCO4"
 ---
 
 HexGrid is a strategic resource management game developed as part of the **Master in Game Development** program at the University of Verona. Developed by a team of 4 students, the challenge was to build a fully functional game without using commercial engines like Unity or Unreal, relying instead on the **Raylib** framework.

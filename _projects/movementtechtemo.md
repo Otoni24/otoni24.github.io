@@ -10,6 +10,7 @@ date: 2026-04-20
 github_link: "https://github.com/Otoni24/MovementTechDemo"
 thumbnail: "/assets/images/cover_mtd.jpg"
 header_video: "/assets/videos/movementtechdemo.mp4"
+youtube_id: "hn0gscf9EUg"
 ---
 
 MovementTechDemo is a personal technical project developed in Unreal Engine 5 to explore the integration between C++ logic, custom physics, and the animation pipeline. The goal was to extend core engine components to create a responsive, arcade-style movement system.

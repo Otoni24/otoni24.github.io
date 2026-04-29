@@ -10,6 +10,7 @@ date: 2026-01-26
 github_link: "https://github.com/YourUsername/ArcoRestoration"
 thumbnail: "/assets/images/cover_monumentcleaner.jpg"
 header_video: "/assets/videos/monumentcleaner.mp4"
+youtube_id: "mPJGb6v1HY0"
 ---
 
 Arco dei Gavi: Virtual Restoration is a technical project designed to bridge the gap between cultural heritage preservation and real-time interactive software. The application places the player in the role of a restorer, tasked with cleaning a digital replica of the famous Roman arch in Verona.

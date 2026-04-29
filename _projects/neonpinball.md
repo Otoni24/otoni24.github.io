@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "Neon Pinball"
+title: "Neon Flipper"
 order: 1
 description: "A physics-driven arcade pinball game developed in Unreal Engine 5 focusing on C++ backend logic."
 tags: [Unreal Engine 5, C++]
@@ -10,9 +10,10 @@ date: 2026-03-04
 github_link: "https://github.com/Otoni24/NeonFlipper"
 thumbnail: "/assets/images/cover_neonflipper.jpg"
 header_video: "/assets/videos/neonflipper.mp4"
+youtube_id: "vISMEWtoAq8"
 --- 
 
-Neon Pinball is a classic arcade game developed as a hands-on technical project to deeply explore Unreal Engine 5. The primary goal was to master the integration between C++ backend logic, the Chaos physics engine, and the frontend Blueprint UI system.
+Neon Flipper is a classic arcade game developed as a hands-on technical project to deeply explore Unreal Engine 5. The primary goal was to master the integration between C++ backend logic, the Chaos physics engine, and the frontend Blueprint UI system.
 
 Rather than relying on kinematic approximations or fake animations, the game forces the player to adapt to realistic momentum and angles, delivering a fast-paced and physically accurate pinball experience.
 
