@@ -7,7 +7,7 @@ tags: [Unity, C#, HLSL, Photogrammetry, Tech Art]
 role: "Solo Developer"
 engine: "Unity"
 date: 2026-01-26
-github_link: "https://github.com/YourUsername/ArcoRestoration"
+github_link: "https://github.com/Otoni24/MonumentCleaner"
 thumbnail: "/assets/images/cover_monumentcleaner.jpg"
 header_video: "/assets/videos/monumentcleaner.mp4"
 youtube_id: "mPJGb6v1HY0"
