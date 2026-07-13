@@ -7,7 +7,7 @@ tags: [C++20, Memory Management, Systems Programming, CMake]
 role: "Solo Developer"
 engine: "C++20 / CMake"
 date: 2026-07-13
-github_link: "https://github.com/Otoni24/small-object-allocator"
+github_link: "https://github.com/Otoni24/SmallObjectAllocator"
 thumbnail: "/assets/images/cover_smallobjectallocator.jpg"
 ---
 
