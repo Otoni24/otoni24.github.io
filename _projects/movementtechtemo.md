@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Movement Tech Demo"
-order: 0
+order: 2
 description: "A technical showcase in Unreal Engine 5 focusing on C++ integration and custom movement physics."
 tags: [Unreal Engine 5, C++, Gameplay Programming, Combat System, Physics]
 role: "Solo Developer"

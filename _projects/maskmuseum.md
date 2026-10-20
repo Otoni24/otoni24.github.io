@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: "Mask Museum"
-order: 2
+order: 0
 description: "A dimension-shifting puzzle game developed in 48 hours for the Global Game Jam."
 tags: [Unity, C#, Game Jam, Group Project]
 role: "Co-Developer"

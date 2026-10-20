@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Platformer Demo"
-order: -0.5
+order: 2.5
 description: "An Unreal Engine 5 tech demo focused on C++ gameplay programming, animation integration, UI, and audio."
 tags: [Unreal Engine 5, C++, Gameplay Programming, Animation, UI]
 role: "Solo Developer"
@@ -13,7 +13,7 @@ header_video: "/assets/videos/platformer.mp4"
 youtube_id: "-CB5Db7SBuQ"
 ---
 
-Platformer Demo is an educational third-person prototype developed in Unreal Engine 5, primarily in C++.
+Platformer Demo is a third-person prototype developed in Unreal Engine 5, primarily in C++.
 
 The project was built to practise the integration of character movement, animation, boss logic, UI, audio, and Unreal Engine's gameplay framework. The focus was on technical implementation rather than level design or creating a complete game.
 
