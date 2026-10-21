@@ -151,7 +151,6 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 }
 
 /* --- Hero Image (Right - Absolute) --- */
-/* --- Hero Image (Right - Absolute) --- */
 .hero-image {
     position: absolute;
     bottom: 0;
@@ -380,12 +379,6 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: 1;
 }
-.game-card {
-    background: #fff;
-    padding: 30px; border-radius: 12px;
-    border: 1px solid #e1e4e8;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
 
 /* Card Hover State */
 @media (hover: hover) and (pointer: fine) {
@@ -544,19 +537,31 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 /* --- Content Grid --- */
 .content-grid {
     display: grid;
-    grid-template-columns: 1fr 340px;
+    grid-template-columns: minmax(0, 1fr) 340px;
     gap: 60px;
     align-items: start;
 }
 
 /* --- Left Column: Story --- */
+/* Allow the story column to shrink independently of its content */
+.main-story {
+    min-width: 0;
+}
+
 .project-title {
+    overflow-wrap: anywhere;
     font-size: 3.5rem; font-weight: 900; line-height: 0.95;
     color: #1a222c; /* Keeps logic of dark text on white paper */
     margin-top: -50px; margin-bottom: 40px; letter-spacing: -1.5px;
 }
 
-.prose { font-size: 1.15rem; line-height: 1.8; color: #4b5563; }
+.prose {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #4b5563;
+}
 .prose p { margin-bottom: 2em; max-width: 65ch; }
 
 /* Separators */
@@ -584,10 +589,11 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 
 /* Feature Lists */
 .prose ul {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px;
     padding: 0; margin: 30px 0; list-style: none;
 }
 .prose li {
+    min-width: 0;
     background: #f9fafb; border: 1px solid #e5e7eb;
     padding: 15px 20px; border-radius: 8px;
     font-size: 0.95rem; font-weight: 600; color: #374151;
@@ -627,8 +633,38 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 }
 .prose a { color: var(--accent); text-decoration: underline; }
 
+/* --- Inline Code & Code Blocks --- */
+/* Wrap inline identifiers without changing preformatted code */
+.prose :not(pre) > code {
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+/* Keep code wrappers and their padding inside the story column */
+.prose div.highlighter-rouge,
+.prose div.highlight,
+.prose pre {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Scroll long lines inside code blocks, preserving indentation */
+.prose pre {
+    overflow-x: auto;
+    white-space: pre;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+.prose pre code {
+    white-space: inherit;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
 /* --- Right Column: Sticky Sidebar --- */
-.sticky-sidebar { position: sticky; top: 40px; z-index: 10; }
+.sticky-sidebar { min-width: 0; position: sticky; top: 40px; z-index: 10; }
 
 .game-card {
     background: #fff;
@@ -680,53 +716,19 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 .meta-section h4 { font-size: 0.85rem; text-transform: uppercase; color: #888; margin-bottom: 15px; font-weight: 700; }
 
 .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;}
-.tech-tag { font-size: 0.8rem; background: #f3f4f6; color: #4b5563; padding: 5px 12px; border-radius: 6px; font-weight: 600; }
+.tech-tag { min-width: 0; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; font-size: 0.8rem; background: #f3f4f6; color: #4b5563; padding: 5px 12px; border-radius: 6px; font-weight: 600; }
 
 .specs-list { list-style: none; padding: 0; margin: 0; }
-.specs-list li { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f3f4f6; font-size: 0.95rem; }
+.specs-list li { display: flex; justify-content: space-between; gap: 8px; padding: 10px 0; border-bottom: 1px solid #f3f4f6; font-size: 0.95rem; }
 .specs-list li:last-child { border-bottom: none; }
 .specs-list .value {
+    min-width: 0;
+    overflow-wrap: anywhere;
     color: #111;
     font-weight: 600;
     text-align: right;
     max-width: 80%;
     display: block;
-}
-
-
-/* --- Responsive (Project Page) --- */
-@media only screen and (max-width: 900px) {
-    .content-grid { grid-template-columns: 1fr; gap: 40px; }
-    .project-content-area { margin-top: 40px; }
-    .prose ul { grid-template-columns: 1fr; }
-    .sticky-sidebar { position: static; }
-    
-    .video-wrapper,
-    .cinema-header-section > .central-container > img {
-        max-height: none;
-        display: block; /* Disables flex on wrapper to let height: auto work correctly */
-    }
-
-    .cinema-header-section video,
-    .cinema-header-section > .central-container > img {
-        max-height: none;
-        height: auto; /* Shrinks container exactly to video/image aspect ratio */
-    }
-
-    .video-overlay {
-        padding: 15px;
-        /* box-sizing: border-box (inherited) keeps this perfectly centered now */
-    }
-
-    .video-loader {
-        font-size: 1rem;
-        line-height: 1.4;
-    }
-
-    .video-play-btn {
-        font-size: 14px;
-        padding: 10px 16px;
-    }
 }
 
 
@@ -799,25 +801,42 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 }
 
 /* ==========================================================================
-   11. PROJECT PAGE OVERFLOW & MOBILE TYPOGRAPHY
+   11. PROJECT PAGE RESPONSIVE LAYOUT & TYPOGRAPHY
    ========================================================================== */
 
-/* Allow grid columns to shrink below their content's intrinsic width */
-.main-story,
-.sticky-sidebar {
-    min-width: 0;
-}
+/* --- Responsive (Project Page) --- */
+@media only screen and (max-width: 900px) {
+    .content-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .project-content-area { margin-top: 40px; }
+    .prose ul { grid-template-columns: minmax(0, 1fr); }
+    .sticky-sidebar { position: static; }
 
-/* Wrap long titles and unbroken text to prevent horizontal overflow */
-.project-title,
-.prose {
-    overflow-wrap: anywhere;
-}
+    .video-wrapper,
+    .cinema-header-section > .central-container > img {
+        max-height: none;
+        display: block; /* Disables flex on wrapper to let height: auto work correctly */
+    }
 
-/* Allow inline code to wrap while preserving preformatted code blocks */
-.prose :not(pre) > code {
-    white-space: normal;
-    overflow-wrap: anywhere;
+    .cinema-header-section video,
+    .cinema-header-section > .central-container > img {
+        max-height: none;
+        height: auto; /* Shrinks container exactly to video/image aspect ratio */
+    }
+
+    .video-overlay {
+        padding: 15px;
+        /* box-sizing: border-box (inherited) keeps this perfectly centered now */
+    }
+
+    .video-loader {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .video-play-btn {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
 }
 
 /* Scale project titles to fit smaller screens */
@@ -826,30 +845,4 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
         font-size: clamp(2rem, 8vw, 3rem);
         line-height: 1.1;
     }
-}
-
-/* Keep syntax-highlighting wrappers within the content column */
-.prose div.highlighter-rouge,
-.prose div.highlight {
-    min-width: 0;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-/* Scroll long code lines inside their block */
-.prose pre {
-    min-width: 0;
-    max-width: 100%;
-    box-sizing: border-box;
-    overflow-x: auto;
-    white-space: pre;
-    overflow-wrap: normal;
-    word-break: normal;
-}
-
-/* Preserve code indentation and original line breaks */
-.prose pre code {
-    white-space: inherit;
-    overflow-wrap: normal;
-    word-break: normal;
 }
