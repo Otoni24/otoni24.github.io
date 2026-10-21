@@ -797,3 +797,59 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
         transition: color 0.3s ease;
     }
 }
+
+/* ==========================================================================
+   11. PROJECT PAGE OVERFLOW & MOBILE TYPOGRAPHY
+   ========================================================================== */
+
+/* Allow grid columns to shrink below their content's intrinsic width */
+.main-story,
+.sticky-sidebar {
+    min-width: 0;
+}
+
+/* Wrap long titles and unbroken text to prevent horizontal overflow */
+.project-title,
+.prose {
+    overflow-wrap: anywhere;
+}
+
+/* Allow inline code to wrap while preserving preformatted code blocks */
+.prose :not(pre) > code {
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+/* Scale project titles to fit smaller screens */
+@media only screen and (max-width: 600px) {
+    .project-title {
+        font-size: clamp(2rem, 8vw, 3rem);
+        line-height: 1.1;
+    }
+}
+
+/* Keep syntax-highlighting wrappers within the content column */
+.prose div.highlighter-rouge,
+.prose div.highlight {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Scroll long code lines inside their block */
+.prose pre {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    white-space: pre;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+/* Preserve code indentation and original line breaks */
+.prose pre code {
+    white-space: inherit;
+    overflow-wrap: normal;
+    word-break: normal;
+}
