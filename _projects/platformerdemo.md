@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Platformer Demo"
-order: 2.5
+order: 8
 description: "An Unreal Engine 5 tech demo focused on C++ gameplay programming, animation integration, UI, and audio."
 tags: [Unreal Engine 5, C++, Gameplay Programming, Animation, UI]
 role: "Solo Developer"

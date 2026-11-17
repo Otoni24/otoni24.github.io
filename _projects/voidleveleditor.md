@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Void Level Editor"
-order: 4
+order: 10
 description: "A custom 2D level editor written in C++ with automated hitbox generation."
 tags: [C++, SFML, ImGui, Tool Dev]
 role: "Solo Developer"

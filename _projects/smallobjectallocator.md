@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Small Object Allocator"
-order: 0.5
+order: 5
 description: "A modern C++20 small object allocator inspired by Alexandrescu, built around slab allocation, RAII ownership, and measurable memory behavior."
 tags: [C++20, Memory Management, Systems Programming, CMake]
 role: "Solo Developer"

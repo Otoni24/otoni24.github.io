@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "HexGrid - Energy Rush"
-order: 5
+order: 11
 description: "A C++ resource management puzzle developed with Raylib."
 tags: [C++, Raylib, CMake, Group Project]
 role: "Co-Developer"

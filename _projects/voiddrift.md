@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "VoidDrift"
-order: 3
+order: 9
 description: "A custom C++ arcade game built from scratch without commercial engines."
 tags: [C++, SFML, Box2D, Engine Architecture]
 role: "Solo Developer"

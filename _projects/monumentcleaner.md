@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Monument Cleaner"
-order: 6
+order: 12
 description: "A photogrammetry-based cleaning simulator using custom Unity shaders."
 tags: [Unity, C#, HLSL, Photogrammetry, Tech Art]
 role: "Solo Developer"

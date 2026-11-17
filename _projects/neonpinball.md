@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: "Neon Flipper"
-order: 1
+order: 6
 description: "A physics-driven arcade pinball game developed in Unreal Engine 5 focusing on C++ backend logic."
 tags: [Unreal Engine 5, C++]
 role: "Solo Developer"
